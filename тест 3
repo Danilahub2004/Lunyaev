@@ -1,0 +1,14 @@
+const axios = require('axios');
+const app = require('../app');
+
+describe('API error responses for invalid requests', () => {
+  it('returns 400 Bad Request for a doRegister request with invalid input', async () => {
+    const response = await axios.post('http://localhost:3000/api/doRegister', {
+      name: 'John Doe',
+      email: 'johndoecom', // missing @ symbol
+    });
+    expect(response.status).toBe(400);
+  });
+
+  // add more tests for other invalid requests here...
+});
